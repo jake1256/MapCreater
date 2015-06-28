@@ -332,7 +332,7 @@ public class MapCreaterSubWindow : EditorWindow
 		string result = "";
 		for (int i = 0; i < mapSize; i++) {
 			for(int j = 0 ; j < mapSize ; j++){
-				result += map[i,j];
+				result += OutputDataFormat(map[i,j]);
 				if(j < mapSize - 1){
 					result += ",";
 				}
@@ -340,5 +340,15 @@ public class MapCreaterSubWindow : EditorWindow
 			result += "\n";
 		}
 		return result;
+	}
+
+	private string OutputDataFormat(string data){
+		if(data != null && data.Length > 0){
+			string[] tmps = data.Split('/');
+			string fileName = tmps[tmps.Length - 1];
+			return fileName.Split('.')[0];
+		}else{
+			return "";
+		}
 	}
 }
